@@ -9,6 +9,7 @@ class GameBoard{
         void print();
         void setSquare(int row, int col, char val);
         char getSquare(int row, int col);
+        bool hasWon(char letter);
 
 };
 
@@ -43,4 +44,52 @@ void GameBoard::setSquare(int row, int col, char val){
 
 char GameBoard::getSquare(int row, int col){
     return board[row][col];
+}
+
+
+bool GameBoard::hasWon(char letter){
+    bool won;
+    // check rows
+    for(int i=0; i < 4; i++){
+        won = true;
+
+        for(int j=0; j < 4; j++){
+            if(board[i][j] != letter){
+                won = false;
+                break;
+            }
+        }
+
+        if(won){
+            return true;
+        }
+
+    }
+
+    // check columns
+    for(int i=0; i < 4; i++){
+        won = true;
+
+        for(int j=0; j < 4; j++){
+            if(board[j][i] != letter){
+                won = false;
+                break;
+            }
+        }
+
+        if(won){
+            return true;
+        }
+
+    }
+
+    // check diagonals
+    for(int i=0; i < 4; i++){
+        if(board[i][i] != letter and board[i][3-i] != letter){
+            return false;
+        }
+    }
+
+    return true;
+
 }
