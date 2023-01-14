@@ -1,13 +1,15 @@
-#include "gameboard.hpp"
+#include "gameBoard.hpp"
+#include "functions.cpp"
 
 int main(){
-    Gameboard game_board;
+    GameBoard gameBoard;
+    string xUserName, oUserName;
 
-    game_board.setSquare(0,0,'x');
-    game_board.setSquare(1,0,'o');
-    game_board.setSquare(1,1,'x');
+    xUserName = getUserName('X');
+    oUserName = getUserName('O');
 
-    game_board.print();
+    cout << xUserName << " " << oUserName << endl;
+    gameBoard.print();
 
     return 0;
 }
