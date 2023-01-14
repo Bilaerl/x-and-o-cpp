@@ -9,7 +9,10 @@ int main(){
     oUserName = getUserName('O');
 
     cout << xUserName << " " << oUserName << endl;
+    
+    makeUserMove(gameBoard, xUserName, 'X');
     gameBoard.print();
+
 
     return 0;
 }
