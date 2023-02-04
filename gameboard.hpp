@@ -1,8 +1,12 @@
 #include <iostream>
 using namespace std;
 
+/* TODO: Reformat to contain xter to move
+*/
+
 class GameBoard{
         char board[4][4];
+        bool gameOver();
 
     public:
         GameBoard();
@@ -10,6 +14,7 @@ class GameBoard{
         void setSquare(int row, int col, char val);
         char getSquare(int row, int col);
         bool hasWon(char letter);
+        void checkGameOver();
 
 };
 
@@ -91,5 +96,23 @@ bool GameBoard::hasWon(char letter){
     }
 
     return true;
+
+}
+
+
+void GameBoard::checkGameOver(){
+    if(hasWon('X') or hasWon('O')){
+        gameOver = true;
+    }else{
+        for(int i=0; i < 4; i++){
+            for(int j=0; i < 4; j++){
+                if(board[i][j] == '-'){
+                    return;
+                }
+            }
+        }
+
+        gameOver = true;
+    }
 
 }
